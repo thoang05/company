@@ -1,8 +1,10 @@
 var http = require('http');
 var url = require('url');
+var MongoClient = require('mongodb').MongoClient;
 var port = process.env.PORT || 3000;
 
 
+const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
 
 http.createServer(function(req,res) {
@@ -11,8 +13,7 @@ http.createServer(function(req,res) {
   var info = obj.query.name
   
 
-  const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
+  
 
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
