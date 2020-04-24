@@ -10,9 +10,10 @@ http.createServer(function(req,res) {
   var obj = url.parse(req.url, true).query;
   var name = obj.company;
   var ticker = obj.ticker;
-  
+
   const MongoClient = require('mongodb').MongoClient;
-  const mongo_url = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
+  const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // MongoClient.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
 //  	if (err) {
