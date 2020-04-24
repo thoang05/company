@@ -2,20 +2,17 @@ var http = require('http');
 var url = require('url');
 var port = process.env.PORT || 3000;
 
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
-
+var companyname = "";
+var companyticker = "";
 
 http.createServer(function(req,res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
-  var obj = url.parse(req.url, true).query;
-  var name = obj.company;
-  var ticker = obj.ticker;
+  var obj = url.parse(req.url, true);
+  var name = obj.query.name;
   
-
-  const MongoClient = require('mongodb').MongoClient;
-  const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
-  // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
       console.log(err);
@@ -23,23 +20,23 @@ http.createServer(function(req,res) {
     } 
 
   var database = db.db("Companies");
-  database.collection("companies").findOne({ $or: [{Company: name}, {Ticker: ticker}]}, (err, result) => {
+  database.collection("companies").findOne({ $or: [{Company: name}, {Ticker: name}]}, (err, result) => {
     /* If result is null (not in database) tell the user that and return */
     if (result == null) {
        res.write("Company Name or Stock Ticker was not found.");
        return;
     }
     /* Otherwise, set the company name to the result and display it to the user */
-    var companyname = result.Company;
-    var ticker = result.Ticker;
-     res.write("Company Name: " + companyname + "\n" + "Company Ticker: " + ticker);
+    companyname = result.Company;
+    companyticker = result.Ticker;
+     res.write("Company Name: " + companyname + "\n" + "Company Ticker: " + companyticker);
      /* Close the database */
      db.close();
    })
   });
 
-  res.write("<h2>Hello</h2>");
-  res.write("Success! This app is deployed online");
-  res.write("Company is:" + name);
-  res.end();
+  // res.write("<h2>Hello</h2>");
+  // res.write("Success! This app is deployed online");
+  // res.write("Company is:" + name);
+  // res.end();
 }).listen(port);
