@@ -1,10 +1,8 @@
 var http = require('http');
 var url = require('url');
-var MongoClient = require('mongodb').MongoClient;
 var port = process.env.PORT || 3000;
 
 
-const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
 
 http.createServer(function(req,res) {
@@ -13,7 +11,8 @@ http.createServer(function(req,res) {
   var info = obj.query.name
   
 
-  
+  var MongoClient = require('mongodb').MongoClient;
+  const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
@@ -39,5 +38,5 @@ http.createServer(function(req,res) {
 
   // res.write("<h2>Hello</h2>");
   // res.write("Success! This app is deployed online");
-  // res.end();
+  res.end();
 }).listen(port);
