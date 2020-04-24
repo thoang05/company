@@ -12,8 +12,7 @@
 },
   "author": "Trang Hoang",
   "license": "ISC",
-  "bugs": {
-  "url": ""
-},
-  "homepage": ""
+  "dependencies": {
+    "mongodb": "^3.5.6"
+  }
 }
