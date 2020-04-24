@@ -37,7 +37,6 @@ http.createServer(function(req,res) {
    })
   });
 
-  res.write("<h2>Hello World</h2>");
   res.write("Success! This app is deployed online");
   res.write("Company is:" + name);
   res.end();
