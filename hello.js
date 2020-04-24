@@ -22,7 +22,7 @@ http.createServer(function(req,res) {
     } 
 
   var database = db.db("Companies");
-  database.collection("companies").findOne({ $or: [{Company: name}, {Ticker: ticker}]} , (err, result) => {
+  database.collection("companies").findOne({ $or: [{"Company": name}, {"Ticker": ticker}]}, (err, result) => {
     /* If result is null (not in database) tell the user that and return */
     if (result == null) {
        res.write("Company Name or Stock Ticker was not found.");
