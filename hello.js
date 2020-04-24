@@ -36,7 +36,7 @@ http.createServer(function(req,res) {
    })
   });
 
-  res.write("<h2>Hello</h2>");
-  res.write("Success! This app is deployed online");
-  res.end();
+  // res.write("<h2>Hello</h2>");
+  // res.write("Success! This app is deployed online");
+  // res.end();
 }).listen(port);
