@@ -2,16 +2,17 @@ var http = require('http');
 var url = require('url');
 var port = process.env.PORT || 3000;
 
-// const MongoClient = require('mongodb').MongoClient;
-// const mongo_url = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
+
 
 
 http.createServer(function(req,res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   var obj = url.parse(req.url, true).query;
-  var name = obj.company_name;
-  var ticker = obj.company_ticker;
+  var name = obj.company;
+  var ticker = obj.ticker;
   
+  const MongoClient = require('mongodb').MongoClient;
+  const mongo_url = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
 // MongoClient.connect(mongo_url, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
 //  	if (err) {
