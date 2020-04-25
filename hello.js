@@ -9,11 +9,11 @@ var companyticker = "";
 
 http.createServer(function(req,res) {
 
-  if (req.url === '/favicon.ico') {
-    res.writeHead(200, {'Content-Type': 'image/x-icon'} );
-    console.log('favicon requested');
-    return;
- }
+//   if (req.url === '/favicon.ico') {
+//     res.writeHead(200, {'Content-Type': 'image/x-icon'} );
+//     console.log('favicon requested');
+//     return;
+//  }
 
   res.writeHead(200, {'Content-Type': 'text/html'});
   var obj = url.parse(req.url, true);
@@ -22,7 +22,6 @@ http.createServer(function(req,res) {
 
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
-      console.log('HELLO');
       console.log(err);
       return;
     } 
@@ -43,7 +42,4 @@ http.createServer(function(req,res) {
    })
   });
 
-  // res.write("<h2>Hello</h2>");
-  // res.write("Success! This app is deployed online");
-  // res.end();
 }).listen(process.env.PORT || 3000);
