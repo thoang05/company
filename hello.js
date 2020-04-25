@@ -3,12 +3,19 @@ var url = require('url');
 var MongoClient = require('mongodb').MongoClient;
 var port = process.env.PORT || 3000;
 
-const uri = "mongodb+srv://thoang05:mongodatabase@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://thoang05:kykL6bVTFofIQhFC@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
 var companyname = "";
 var companyticker = "";
 
 http.createServer(function(req,res) {
+
+  if (req.url === '/favicon.ico') {
+    res.writeHead(200, {'Content-Type': 'image/x-icon'} );
+    console.log('favicon requested');
+    return;
+ }
+ 
   res.writeHead(200, {'Content-Type': 'text/html'});
   var obj = url.parse(req.url, true);
   var info = obj.query.name
