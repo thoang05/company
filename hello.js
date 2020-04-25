@@ -22,6 +22,7 @@ http.createServer(function(req,res) {
 
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
+      console.log('HELLO');
       console.log(err);
       return;
     } 
