@@ -4,22 +4,12 @@ var MongoClient = require('mongodb').MongoClient;
 
 const uri = "mongodb+srv://thoang05:kykL6bVTFofIQhFC@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
-// var companyname = "";
-// var companyticker = "";
-
 http.createServer(function(req,res) {
 
-//   if (req.url === '/favicon.ico') {
-//     res.writeHead(200, {'Content-Type': 'image/x-icon'} );
-//     console.log('favicon requested');
-//     return;
-//  }
-
   res.writeHead(200, {'Content-Type': 'text/html'});
-  var obj = url.parse(req.url, true);
-  var info = obj.query.name
+  var obj = url.parse(req.url, true).query;
+  var info = obj.name
   
-
   MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true},function(err, db) {
     if (err) {
       console.log(err);
@@ -36,7 +26,7 @@ http.createServer(function(req,res) {
     /* Otherwise, set the company name to the result and display it to the user */
     companyname = result.Company;
     companyticker = result.Ticker;
-     res.write("Company Name: " + companyname + "\n" + "Company Ticker: " + companyticker);
+     res.write("<span style='font-size: 2em'>" + "Company Name: " + companyname + "<br>" + "Company Ticker: " + companyticker + "</span>");
      /* Close the database */
      db.close();
    })
