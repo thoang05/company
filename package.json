@@ -1,10 +1,10 @@
 {
-  "name": "hello",
+  "name": "companies",
   "version": "1.0.0",
   "description": "node app ",
-  "main": "hello.js",
+  "main": "companies.js",
   "scripts": {
-  "start": "node hello.js"
+  "start": "node companies.js"
 },
   "repository": {
   "type": "git",
