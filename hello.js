@@ -26,8 +26,7 @@ http.createServer(function(req,res) {
     /* Otherwise, set the company name to the result and display it to the user */
     companyname = result.Company;
     companyticker = result.Ticker;
-     res.write("<span style='font-size: 2em'>" + "Company Name: " + companyname + "<br>" + "Company Ticker: " + companyticker + "</span><br>");
-     res.write("Click" + "<a href=thoang05.github.io/company/form.html>" + "here" + "</a>" + " to go back to the form")
+     res.write("<span style='font-size: 2em'>" + "Company Name: " + companyname + "<br>" + "Company Ticker: " + companyticker + "<br>" + "Click " + "<a href = https://thoang05.github.io/company/form.html>" + "here" + "</a>" + " to go back to the form" + "</span>")
 
      /* Close the database */
      db.close();
