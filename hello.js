@@ -18,18 +18,17 @@ http.createServer(function(req,res) {
 
   var database = db.db("Companies");
   database.collection("companies").findOne({ $or: [{Company: info}, {Ticker: info}]}, (err, result) => {
-    /* If result is null (not in database) tell the user that and return */
+    
     if (result == null) {
        res.write("Company Name or Stock Ticker was not found.");
        return;
     }
-    /* Otherwise, set the company name to the result and display it to the user */
+
     companyname = result.Company;
     companyticker = result.Ticker;
-    res.write("<h1>" + "Companies and Stock Tickers" + "</h1><br>");
     res.write("<span style='font-size: 2em'>" + "Company Name: " + companyname + "<br>" + "Company Ticker: " + companyticker + "<br><br>" + "Click " + "<a href = https://thoang05.github.io/company/form.html>" + "here" + "</a>" + " to go back to the form" + "</span>");
 
-     /* Close the database */
+
      db.close();
    })
   });
