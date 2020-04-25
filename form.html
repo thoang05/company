@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Companies' Stock Sticker</title>
+  <style type="text/css">
+    body {
+      font-size: 2em;
+    }
+
+    input {
+      padding: 0.5em 1em 0.5em 1em;
+    }
+  </style>
 </head>
 <body>
   <h1 style = "text-align: center;"> Companies and Stock Sticker </h1>
-	Please enter a stock or a stock ticker. 
+	Please enter a company's name or a stock ticker. 
   <form method="get" action ="https://companyticker.herokuapp.com/">
     <input type='text' name='name' placeholder='Enter your stock'> 
-    <input type='submit' value="Find the Stock!"> 
+    <input type='submit' value="Submit!"> 
   </form>
 </body>
 </html>
