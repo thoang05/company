@@ -1,7 +1,6 @@
 var http = require('http');
 var url = require('url');
 var MongoClient = require('mongodb').MongoClient;
-var port = process.env.PORT || 3000;
 
 const uri = "mongodb+srv://thoang05:kykL6bVTFofIQhFC@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -15,7 +14,7 @@ http.createServer(function(req,res) {
     console.log('favicon requested');
     return;
  }
- 
+
   res.writeHead(200, {'Content-Type': 'text/html'});
   var obj = url.parse(req.url, true);
   var info = obj.query.name
@@ -46,4 +45,4 @@ http.createServer(function(req,res) {
   // res.write("<h2>Hello</h2>");
   // res.write("Success! This app is deployed online");
   // res.end();
-}).listen(port);
+}).listen(process.env.PORT || 3000);
