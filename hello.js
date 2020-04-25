@@ -4,8 +4,8 @@ var MongoClient = require('mongodb').MongoClient;
 
 const uri = "mongodb+srv://thoang05:kykL6bVTFofIQhFC@cluster0-e3vaj.mongodb.net/test?retryWrites=true&w=majority";
 
-var companyname = "";
-var companyticker = "";
+// var companyname = "";
+// var companyticker = "";
 
 http.createServer(function(req,res) {
 
