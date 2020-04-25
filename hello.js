@@ -20,7 +20,7 @@ http.createServer(function(req,res) {
   database.collection("companies").findOne({ $or: [{Company: info}, {Ticker: info}]}, (err, result) => {
 
     if (result == null) {
-       res.write("<span style='font-size: 2em'>" + "Company Name or Stock Ticker was not found." + "</span");
+       res.write("<span style='font-size: 2em'>" + "Company Name or Stock Ticker was not found." + "<br><br>" + "Click " + "<a href = https://thoang05.github.io/company/form.html>" + "here" + "</a>" + " to go back to the form" + "</span");
        return;
     }
 
